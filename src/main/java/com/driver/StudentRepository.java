@@ -28,17 +28,17 @@ public class StudentRepository {
     public void addStudentTeacherPair(String studentName,String teacherName) {
 
         for (Student student : Students) {
-
             if (student.getName().equals(studentName)) {
                 if (Pair.containsKey(teacherName)) {
                     Pair.get(teacherName).add(student);
                 }
+                else{
+                    List<Student> newList = new ArrayList<>();
+                    newList.add(student);
+                    Pair.put(teacherName,newList);
+                }
             }
-            else{
-                List<Student> newList = new ArrayList<>();
-                newList.add(student);
-                Pair.put(teacherName,newList);
-            }
+
         }
         for(Teacher teacher:Teachers){
             if(teacher.getName().equals(teacherName)) {
